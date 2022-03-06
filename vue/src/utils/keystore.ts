@@ -19,10 +19,8 @@ function getPrivateKeyFromMnemonic(mnemonic: string, index: number) {
 	const wallet = hdwallet.derivePath(walletHdPath + index).getWallet();
 	// let address = "0x" + wallet.getAddress().toString("hex");
 	const privateKey = wallet.getPrivateKey().toString('hex');
-
 	return privateKey;
 }
-
 
 
 export function getKeystore(password: string, encryptedSeedObject: TypeEncryptedSeed, accountIndex: number): Promise<TypeCreatedKeystore> {
@@ -35,7 +33,6 @@ export function getKeystore(password: string, encryptedSeedObject: TypeEncrypted
 				encryptedSeedObject = await cryptoEncrypt(password, mnemonic);
 			} else {
 				//const encryptedSeedObject = JSON.parse(encryptedSeedPhrase);
-
 				mnemonic = await cryptoDecrypt(password, encryptedSeedObject.ciphertext, encryptedSeedObject.iv, encryptedSeedObject.salt);
 			}
 
@@ -47,7 +44,6 @@ export function getKeystore(password: string, encryptedSeedObject: TypeEncrypted
 			const ethWallet = new ethers.Wallet(privateKey);
 			const syncWallet = await zksync.Wallet.fromEthSigner(ethWallet, syncProvider);
 			const { address, id } = await syncWallet.getAccountState();
-			const nonce = (await syncWallet.getNonce()) + 1;
 
 			const extendedWallet = {
 				address: address,

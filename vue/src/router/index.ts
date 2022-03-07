@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Wallet from '../views/Wallet.vue';
+import Wallet from '../views/Wallet.vue'
 import Login from '../views/Login.vue';
 import Signup from '../views/Signup.vue';
 import TwoFA from '../views/TwoFA.vue';
@@ -8,7 +8,7 @@ import store from '../store/index';
 import Settings from '../views/Settings.vue';
 import Unlock from '../views/Unlock.vue';
 import SignTx from '../views/SignTx.vue';
-import SignMsg from '../views/SignMsg.vue';
+import SignMsg from '../views/SignMsg.vue';;
 import Recovery from '../views/Recovery.vue';
 import EmailSettings from '../views/EmailSettings.vue';
 import PasswordSettings from '../views/PasswordSettings.vue';
@@ -16,6 +16,7 @@ import TwoFactorSettings from '../views/TwoFactorSettings.vue';
 import KeysSettings from '../views/KeysSettings.vue';
 import RecoverySettings from '../views/RecoverySettings.vue';
 import DeleteSettings from '../views/DeleteSettings.vue';
+import ViewCoins from '../views/ViewCoins.vue';
 
 Vue.use(VueRouter);
 
@@ -126,6 +127,14 @@ const routes: Array<RouteConfig> = [
 		component: Wallet,
 		meta: {
 			requiresAuth: true
+		}
+	},
+	{
+		path: '/coins',
+		name: 'ViewCoins',
+		component: ViewCoins,
+		meta: {
+			requiresAuth: false
 		}
 	}
 ];

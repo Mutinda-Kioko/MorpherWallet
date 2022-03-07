@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import * as zksync from 'zksync';
 import Vuex, { Store } from 'vuex';
+import { ethers } from 'ethers';
 import { cryptoDecrypt, sha256 } from '../utils/cryptoFunctions';
 import {
 	getEncryptedSeedFromMail,
@@ -843,7 +844,8 @@ const store: Store<RootState> = new Vuex.Store({
 					body.nonce = (await getNonce(key)).nonce;
 					const signMessage = JSON.stringify(sortObject(body));
 					if (state.keystore != null) {
-						const signature = await state.keystore.sign(signMessage);
+						const flatSig = await state.keystore.sign(signMessage);
+						const signature = ethers.utils.splitSignature(flatSig);
 						const options: RequestInit = {
 							method: params.method,
 							headers: {

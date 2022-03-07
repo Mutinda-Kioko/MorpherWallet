@@ -15,7 +15,7 @@ module.exports = async function(req, res, next) {
             const prefixedMsg = ethereumjs.hashPersonalMessage(signMessage);
             const pub = ethereumjs.ecrecover(prefixedMsg, parseInt(signature.v), ethereumjs.toBuffer(signature.r), ethereumjs.toBuffer(signature.s));
             const addrBuf = ethereumjs.pubToAddress(pub);
-            const addr = ethereumjs.toChecksumAddress(ethereumjs.bufferToHex(addrBuf));
+            const addr = ethereumjs.toChecksumAddress(ethereumjs.bufferToHex(addrBuf)).toLowerCase();
 
             if (user.eth_address === addr) {
                 user.nonce = user.nonce + 1;

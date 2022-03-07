@@ -134,7 +134,7 @@ const routes: Array<RouteConfig> = [
 		name: 'ViewCoins',
 		component: ViewCoins,
 		meta: {
-			requiresAuth: false
+			requiresAuth: true
 		}
 	}
 ];

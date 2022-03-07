@@ -38,7 +38,10 @@
     "vuex-class": "^0.3.2",
     "web3": "^1.7.0",
     "web3-eth": "^1.7.0",
-    "zxcvbn": "^4.4.2"
+    "zxcvbn": "^4.4.2",
+    "ethers": "^5.5.4",
+    "zksync": "^0.12.0-alpha.3",
+    "zksync-crypto": "^0.6.2"
   },
   "devDependencies": {
     "@sentry/webpack-plugin": "^1.17.1",
